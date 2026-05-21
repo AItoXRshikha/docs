@@ -1,0 +1,69 @@
+---
+title: 'Authentication'
+description: 'How to authenticate requests with your API key.'
+---
+
+Every request to `/api/v1/*` must include a Bearer token in the
+`Authorization` header:
+
+```
+Authorization: Bearer ik_live_aBc123xYz...
+```
+
+## Key types
+
+| Prefix      | Purpose                            | Counts against quota? |
+|-------------|------------------------------------|-----------------------|
+| `ik_live_…` | Production traffic, real data      | Yes                   |
+| `ik_test_…` | Sandbox, deterministic sample data | No                    |
+
+Test keys are free forever and return the same payloads regardless of when
+you call. Use them while building so you don't burn live quota.
+
+## Creating keys
+
+1. Sign in to the [developer dashboard](https://newsapi.insighthread.com/dashboard)
+2. Click **Generate key**
+3. Give it a label (e.g. `production-server`)
+4. Pick **Live** or **Test**
+5. **Copy the raw key value immediately** — it's only shown once
+
+We store an irreversible hash, so we cannot recover or resend a key value
+after it's generated.
+
+## Plan limits on keys
+
+| Plan | Live keys | Test keys |
+|------|-----------|-----------|
+| Free | 2         | 3         |
+| Pro  | 5         | 5         |
+
+Revoked keys do not count toward the cap.
+
+## Rotating a key
+
+To rotate without downtime:
+
+1. Generate a new key with a clear label (e.g. `production-v2`)
+2. Deploy the new key to your servers
+3. Once you confirm the new key is being used, revoke the old key from the dashboard
+
+## Revoking a key
+
+Click **Revoke** next to any key in the dashboard. Revocation is immediate —
+the next request using that key will receive `401`.
+
+## Error response
+
+If a request is missing or has an invalid key:
+
+```json
+{
+  "error": {
+    "type": "unauthorized",
+    "message": "Missing or invalid API key. Send \"Authorization: Bearer <key>\"."
+  }
+}
+```
+
+HTTP status: `401`.
