@@ -11,7 +11,7 @@ impact signal strength on a 1–5 scale.
   <Card title="Get an API key" icon="key" href="https://newsapi.insighthread.com/login">
     Sign up as a developer and generate a key in under a minute.
   </Card>
-  <Card title="Quickstart" icon="rocket" href="/docs/quickstart">
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
     Make your first request in 60 seconds with curl.
   </Card>
 </CardGroup>
@@ -27,15 +27,22 @@ impact signal strength on a 1–5 scale.
 
 ## Plans
 
-|                    | Free          | Pro                |
-|--------------------|---------------|--------------------|
-| Daily requests     | 500           | 100,000            |
-| Burst rate         | 1 req / sec   | 10 req / sec       |
-| History window     | 24 hours      | 2 years            |
-| API keys           | 2 live + 3 test | 5 live + 5 test  |
-| Price              | $0            | $25 / month        |
+|                    | Free            | Pro                |
+|--------------------|-----------------|--------------------|
+| Daily requests     | 500             | 100,000            |
+| Burst rate         | 1 req / sec     | 10 req / sec       |
+| History window     | 24 hours        | 2 years            |
+| API keys           | 2 live + 3 test | 5 live + 5 test    |
+| Price              | $0              | $25 / month        |
 
 [See full pricing →](https://newsapi.insighthread.com/dashboard/upgrade)
 
 ## Base URL
 
+All endpoints live under a single base:
+
+```
+https://newsapi.insighthread.com/api/v1
+```
+
+Every request requires a Bearer token. See [Authentication](/authentication) for details.
