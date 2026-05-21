@@ -1,133 +1,41 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
-icon: 'star'
+title: 'Introduction'
+description: 'Real-time market news with sentiment + impact scoring, delivered as JSON.'
 ---
 
-## Setting up
+The **InsightThread News API** delivers classified financial news as a simple
+JSON feed — headlines tagged with event types, sentiment, confidence, and an
+impact signal strength on a 1–5 scale.
 
-Get your documentation site up and running in minutes.
-
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Get an API key" icon="key" href="https://newsapi.insighthread.com/login">
+    Sign up as a developer and generate a key in under a minute.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Quickstart" icon="rocket" href="/docs/quickstart">
+    Make your first request in 60 seconds with curl.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## What you get
 
-Everything you need to create world-class documentation.
+- **Real-time news feed** — classified by event type, sentiment, and signal strength
+- **Ticker filtering** — `?ticker=AAPL` or `?tickers=AAPL,MSFT,GOOGL`
+- **Event-type filtering** — earnings, legal actions, M&A, regulatory, and more
+- **Sandbox keys** — free `ik_test_*` keys return deterministic sample data so you
+  can integrate without burning live quota
+- **Cursor pagination** — stable, opaque cursors for reliable backfill
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+## Plans
 
-## Make your content agent ready
+|                    | Free          | Pro                |
+|--------------------|---------------|--------------------|
+| Daily requests     | 500           | 100,000            |
+| Burst rate         | 1 req / sec   | 10 req / sec       |
+| History window     | 24 hours      | 2 years            |
+| API keys           | 2 live + 3 test | 5 live + 5 test  |
+| Price              | $0            | $25 / month        |
 
-Make your docs work for humans and AI agents alike.
+[See full pricing →](https://newsapi.insighthread.com/dashboard/upgrade)
 
-<Columns cols={2}>
-  <Card
-    title="Prompt component"
-    icon="robot"
-    href="/agent-ready/prompt"
-  >
-    Embed shareable AI prompts readers can copy or open in Cursor.
-  </Card>
-  <Card
-    title="Visibility"
-    icon="eye"
-    href="/agent-ready/visibility"
-  >
-    Show different content to humans and agents reading your docs.
-  </Card>
-  <Card
-    title="Contextual menu"
-    icon="bolt"
-    href="/agent-ready/contextual"
-  >
-    Give readers one-click access to Claude, ChatGPT, Cursor, and more.
-  </Card>
-  <Card
-    title="AI coding tools"
-    icon="wand-magic-sparkles"
-    href="/ai-tools/claude-code"
-  >
-    Set up Claude Code, Cursor, or Windsurf with Mintlify's skill.
-  </Card>
-</Columns>
+## Base URL
 
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
