@@ -1,0 +1,65 @@
+---
+title: 'Errors'
+description: 'Error response shape and status codes.'
+---
+
+Every error response uses the same JSON envelope:
+
+```json
+{
+  "error": {
+    "type": "<machine-readable-code>",
+    "message": "<human-readable explanation>"
+  }
+}
+```
+
+Some errors include additional fields (e.g. a list of valid values) — those
+are documented per-endpoint.
+
+## Status codes
+
+| Status | Type                  | When you'll see it                                                |
+|--------|-----------------------|-------------------------------------------------------------------|
+| `400`  | `invalid_request`     | A query parameter is malformed or has an unknown value            |
+| `401`  | `unauthorized`        | Missing or invalid `Authorization` header                         |
+| `429`  | `rate_limit_exceeded` | Daily quota or burst rate exceeded — see [Rate limits](/rate-limits) |
+| `500`  | `server_error`        | Unexpected internal error — please retry, then contact support at [insighthread@gmail.com](mailto:insighthread@gmail.com) if it persists |
+| `502`  | `server_error`        | Upstream data source temporarily unavailable                      |
+
+## Examples
+
+### Unknown event type
+
+```json
+{
+  "error": {
+    "type": "invalid_request",
+    "message": "Unknown event_type \"earnings-call\". Use one of the slugs below.",
+    "valid_event_types": [
+      { "event_type": "Corporate Earnings", "slug": "corporate-earnings" },
+      { "event_type": "Legal Action",       "slug": "legal-action" }
+    ]
+  }
+}
+```
+
+Call [`GET /api/v1/events`](/api-reference/events) to see the full list of
+valid event-type slugs.
+
+### Authentication failure
+
+```json
+{
+  "error": {
+    "type": "unauthorized",
+    "message": "Missing or invalid API key."
+  }
+}
+```
+
+Check that:
+
+- The header is **exactly** `Authorization: Bearer <key>` (mind the space)
+- The key hasn't been revoked in the dashboard
+- You're using a `ik_live_*` or `ik_test_*` key, not an old format
