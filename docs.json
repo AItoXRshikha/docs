@@ -8,6 +8,12 @@
     "dark": "#60A5FA"
   },
   "favicon": "/favicon.svg",
+  "api": {
+    "openapi": "/openapi.json",
+    "playground": {
+      "display": "interactive"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -15,18 +21,11 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "authentication"
-            ]
+            "pages": ["index", "quickstart", "authentication"]
           },
           {
             "group": "Usage",
-            "pages": [
-              "rate-limits",
-              "errors"
-            ]
+            "pages": ["rate-limits", "errors"]
           }
         ]
       },
@@ -35,9 +34,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "pages": ["api-reference/introduction"]
           },
           {
             "group": "Endpoints",
@@ -57,10 +54,7 @@
   },
   "navbar": {
     "links": [
-      {
-        "label": "Support",
-        "href": "mailto:insighthread@gmail.com"
-      }
+      { "label": "Support", "href": "mailto:insighthread@gmail.com" }
     ],
     "primary": {
       "type": "button",
@@ -69,15 +63,6 @@
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
   }
 }
