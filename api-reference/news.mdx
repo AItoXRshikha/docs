@@ -1,0 +1,23 @@
+---
+title: 'List news'
+openapi: 'GET /news'
+---
+
+The main endpoint. Combine `event_type` and `ticker` to narrow the feed,
+and use the `cursor` from each response to page through results.
+
+## Common request patterns
+
+```bash
+# Latest 10 articles, no filter
+curl "https://newsapi.insighthread.com/api/v1/news?limit=10" \
+  -H "Authorization: Bearer ik_test_REPLACE_ME"
+
+# Earnings news for Apple and Microsoft
+curl "https://newsapi.insighthread.com/api/v1/news?event_type=corporate-earnings&ticker=AAPL,MSFT" \
+  -H "Authorization: Bearer ik_test_REPLACE_ME"
+
+# Next page using a cursor from the previous response
+curl "https://newsapi.insighthread.com/api/v1/news?cursor=eyJ0Ijoi..." \
+  -H "Authorization: Bearer ik_test_REPLACE_ME"
+```
