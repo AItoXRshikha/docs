@@ -28,28 +28,35 @@ The `/ping` endpoint is the simplest sanity check:
 ```bash
 curl https://newsapi.insighthread.com/api/v1/ping \
   -H "Authorization: Bearer ik_test_REPLACE_ME"
+```
+
 Successful response:
 
-
+```json
 {
   "ok": true,
   "message": "Authenticated as \"my-first-key\"",
   "client": { "id": "...", "label": "my-first-key", "prefix": "ik_test_" },
   "served_at": "2026-05-21T10:00:00.000Z"
 }
-If you see a 401, double-check that the Authorization header is exactly
-Bearer <your-key> with a single space.
+```
+
+If you see a 401, double-check that the `Authorization` header is exactly
+`Bearer <your-key>` with a single space.
 
 ## 4. Fetch news
 
+```bash
 curl "https://newsapi.insighthread.com/api/v1/news?limit=3&ticker=AAPL" \
   -H "Authorization: Bearer ik_test_REPLACE_ME"
+```
+
 You'll get back a paginated list of classified news events with sentiment
-and impact scoring. See the news endpoint for
-the full response shape and all filter parameters.
+and impact scoring. See the [news endpoint](/api-reference/news) for the
+full response shape and all filter parameters.
 
 ## 5. Promote to live
+
 When you're ready for real data, generate a live key the same way (Generate
-key → Live) and swap ik_test_… for ik_live_… in your code.
-Live keys count against your daily quota — see
-Rate limits.
+key → **Live**) and swap `ik_test_…` for `ik_live_…` in your code. Live
+keys count against your daily quota — see [Rate limits](/rate-limits).
