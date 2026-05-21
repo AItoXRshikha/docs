@@ -1,0 +1,38 @@
+---
+title: 'Rate limits'
+description: 'Per-plan quotas and how to handle them.'
+---
+
+The API enforces two kinds of limits on **live keys**:
+
+- A **daily request cap** that resets at 00:00 UTC
+- A **burst rate limit** measured per second
+
+Test keys (`ik_test_*`) are not rate-limited and do not count toward either.
+
+## Plan limits
+
+| Plan  | Daily requests | Burst (per sec) | History window |
+|-------|----------------|-----------------|----------------|
+| Free  | 500            | 1               | 24 hours       |
+| Pro   | 100,000        | 10              | 2 years        |
+
+History window is the cutoff for `published_at` on news articles — Free
+plan responses will not include events older than 24 hours.
+
+## Monitoring usage
+
+The [developer dashboard](https://newsapi.insighthread.com/dashboard) shows:
+
+- A **daily usage bar** with your current count vs. the daily cap
+- **Per-key request totals** for the current month
+- **All-time** request count per key
+
+The counters update within seconds of each request.
+
+## Upgrading
+
+If you're hitting the Free plan cap and need more, upgrade from the
+dashboard. The new limits apply immediately on successful checkout.
+
+[Compare plans →](https://newsapi.insighthread.com/dashboard/upgrade)
