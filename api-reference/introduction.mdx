@@ -1,33 +1,49 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Overview'
+description: 'How the InsightThread News API is structured.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+The InsightThread News API is a small, focused REST API. Three endpoints,
+one auth scheme, one response envelope.
 
-## Welcome
+## Base URL
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+```
+https://newsapi.insighthread.com/api/v1
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Every request requires a Bearer token in the `Authorization` header:
+
+```
+Authorization: Bearer ik_live_aBc123xYz...
+```
+
+See [Authentication](/authentication) for how to create, rotate, and revoke keys.
+
+## Response shape
+
+Successful responses are JSON. Collection endpoints return a top-level
+`count`, an optional `pagination` block, and `data`:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+{
+  "count": 3,
+  "pagination": { "next_cursor": "abc...", "has_more": true },
+  "data": [ /* ... */ ]
+}
 ```
+
+Errors use a consistent envelope. See [Errors](/errors).
+
+## Endpoints at a glance
+
+| Method | Path        | Purpose                                                  |
+|--------|-------------|----------------------------------------------------------|
+| `GET`  | `/ping`     | Verify an API key                                        |
+| `GET`  | `/events`   | List the valid event-type slugs you can filter on        |
+| `GET`  | `/news`     | The main feed — paginated classified news articles       |
+
+Pick an endpoint from the left sidebar to see request parameters,
+example responses, and a working "Try it" panel.
